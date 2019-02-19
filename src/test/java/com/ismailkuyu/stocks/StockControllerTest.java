@@ -24,6 +24,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -42,8 +43,17 @@ import com.jayway.jsonpath.spi.json.JsonProvider;
 import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
 import com.jayway.jsonpath.spi.mapper.MappingProvider;
 
+
+/**
+ *
+ * Unit test class for the {@link StockController}
+ * 
+ *
+ * @author Ismail Kuyu
+ */
 @RunWith(SpringRunner.class)
 @WebMvcTest
+@AutoConfigureRestDocs
 public class StockControllerTest {
 
 	@Autowired
@@ -52,6 +62,9 @@ public class StockControllerTest {
 	@MockBean
 	private StockController stockController;
 
+	/**
+	 * initializer for the configuration
+	 */
 	@Before
 	public void init() {
 		final ObjectMapper objectMapper = new ObjectMapper();
@@ -81,6 +94,11 @@ public class StockControllerTest {
 
 	}
 
+	/**
+	 * Unit test for the method 'all' from {@link StockController}.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void verifyAll() throws Exception {
 		Stock stock1 = new Stock(1L, "Test Stock 1", 1.0);
@@ -105,6 +123,11 @@ public class StockControllerTest {
 
 	}
 
+	/**
+	 * Unit test for the method 'one' from {@link StockController}.
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void verifyOne() throws Exception {
 		
@@ -122,6 +145,11 @@ public class StockControllerTest {
 	    verifyNoMoreInteractions(stockController);
 	}
 
+	/**
+	 * Unit test for the method 'replaceStock' from {@link StockController}.
+
+	 * @throws Exception
+	 */
 	@Test
 	public void verifyReplace() throws Exception {
 
@@ -146,7 +174,12 @@ public class StockControllerTest {
 
 		
 	}
+	
+	/**
+	 * Unit test for the method 'newStock' from {@link StockController}.
 
+	 * @throws Exception
+	 */
 	@Test
 	public void verifyNew() throws Exception {
 
@@ -172,6 +205,11 @@ public class StockControllerTest {
 
 	}
 	
+	/**
+	 * Unit test for the method 'deleteStock' from {@link StockController}.
+
+	 * @throws Exception
+	 */
 	@Test
 	public void verifyDelete() throws Exception {
 
