@@ -1,6 +1,7 @@
 package com.ismailkuyu.stocks.bean;
 
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -64,6 +65,27 @@ public class Stock {
 
 	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(currentPrice, id, lastUpdate, name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Stock other = (Stock) obj;
+		return Double.doubleToLongBits(currentPrice) == Double.doubleToLongBits(other.currentPrice)
+				&& Objects.equals(id, other.id) && Objects.equals(lastUpdate, other.lastUpdate)
+				&& Objects.equals(name, other.name);
 	}	
+	
+	
 
 }
