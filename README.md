@@ -2,6 +2,8 @@ Hey.
 
 Basic stocks app. 
 
+
+
 ENDPOINTS
 
 /api/stocks (get)               -> all stocks
