@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Demo Stock Application</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+ 
+<body>
+<div class="container">
+	<h1>Stocks</h1>
+	<div class="row col-md-7 table-responsive">
+		<table id="stockTable" class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Current Price</th>
+					<th>Last Update</th>
+				</tr>
+			</thead>
+			<tbody>
+				 <tr th:each="stock, rowStat: ${stocks}"
+				 	 th:style="${rowStat.odd} ? 'color: blue' : 'color: gray;'">
+			        <td th:text="${stock.id}">1</td>
+					<td th:text="${stock.name}">name</td>
+			        <td th:text="${stock.currentPrice}">price</td>
+			        <td th:text="${stock.lastUpdate}">now</td>
+			    </tr>
+			</tbody>
+		</table>
+	</div>
+</div>

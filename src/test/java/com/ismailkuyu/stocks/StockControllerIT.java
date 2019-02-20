@@ -78,6 +78,11 @@ public class StockControllerIT {
 	}
 	
 	/**
+	 * 
+	 */
+	
+	
+	/**
 	 * Integration test for the method 'newStock' from {@link StockController}.
 	 * 
 	 * @throws JSONException
