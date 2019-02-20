@@ -28,7 +28,7 @@ import com.ismailkuyu.stocks.service.StockService;
 * @author Ismail Kuyu
 */
 @Controller
-@RequestMapping("/api/stocks")
+@RequestMapping("/api")
 public class StockController {
 
 
@@ -40,7 +40,7 @@ public class StockController {
 	 * 
 	 * @return List<Stock>
 	 */
-	@GetMapping()
+	@GetMapping("/stocks")
 	@ResponseBody()
 	public List<Stock> all() {
 		return service.all();
@@ -53,7 +53,7 @@ public class StockController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/pretty")
+	@GetMapping("/pretty_stocks")
 	public String allPretty(Model model) {
 		List<Stock> list = service.all();
 		model.addAttribute("stocks", list);
@@ -66,7 +66,7 @@ public class StockController {
 	 * @param id of Stock
 	 * @return Stock 
 	 */
-	@GetMapping("/{id}")
+	@GetMapping("/stocks/{id}")
 	@ResponseBody
 	public Stock one(@PathVariable Long id) {
 		return service.one(id);
@@ -79,7 +79,7 @@ public class StockController {
 	 * @param id: id of stock that will be replaced
 	 * @return Stock: stock that replaced
 	 */
-	@PutMapping("/{id}")
+	@PutMapping("/stocks/{id}")
 	@ResponseBody
 	public Stock replaceStock(@RequestBody Stock newStock, @PathVariable Long id) {
 		return service.replaceStock(newStock, id);
@@ -92,7 +92,7 @@ public class StockController {
 	 * @param newStock: stock to add
 	 * @return Stock: stock added
 	 */
-	@PostMapping()
+	@PostMapping("/stocks")
 	@ResponseBody
 	public Stock newStock(@RequestBody Stock newStock) {
 		newStock.setLastUpdate(new Date());
@@ -105,7 +105,7 @@ public class StockController {
 	 * @param id: id of the stock to be deleted
 	 * @return confirmation of the deletion
 	 */
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/stocks/{id}")
 	@ResponseBody
 	public String deleteStock(@PathVariable Long id) {
 		Stock stock = service.one(id);
